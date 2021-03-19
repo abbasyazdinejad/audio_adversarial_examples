@@ -75,8 +75,6 @@ $ docker run --gpus all -it --mount src=$(pwd),target=/audio_adversarial_example
 ```
 $ docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind -w /audio_adversarial_examples aae_deepspeech_041_cpu
 ```
-
-
 ### Test Setup
 5. Check that you can classify normal audio correctly:
 ```
@@ -148,7 +146,7 @@ ca825ad95066b10f5e080db8cb24b165
 
 5. Check that you can classify normal images correctly
 ```
-python3 attack.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in sample-000000.wav --restore_path tomdoerr/deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 
 6. Generate adversarial examples
@@ -162,8 +160,42 @@ python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.
 ```
 
 
-### My Experiences
-- Step 1: Run docker with 
+# Abbas Experiences
+
+1. Install docker and pull by command in windows shell
 ```
- docker pull tomdoerr/aae_deepspeech_041_cpu
+ docker pull tomdoerr/aae_deepspeech_041_cpu:latest
+```
+
+2. Run the setup command in windows shell
+```
+ ./setup.sh
+ git clone https://github.com/mozilla/DeepSpeech.git
+ cd DeepSpeech
+ git checkout v0.4.1
+ cd ..
+```
+
+3. Download and extract in windows shell
+```
+ Download: https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-checkpoint.tar.gz
+ Extract: tar -xzf deepspeech-0.4.1-checkpoint.tar.gz
+```
+
+4. Start the container and go inside of linux
+```
+docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind -w /audio_adversarial_examples tomdoerr/aae_deepspeech_041_cpu:latest
+```
+
+5. Run python commands inside linux machine
+```
+Auto
+python3 classify.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 classify.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+
+Manual
+python3 attack.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
