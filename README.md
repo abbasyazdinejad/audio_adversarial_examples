@@ -160,3 +160,10 @@ python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav
 ```
 python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
+
+
+### My Experiences
+- Step 1: Run docker with 
+```
+ docker pull tomdoerr/aae_deepspeech_041_cpu
+```
