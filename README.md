@@ -189,7 +189,7 @@ docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind -
 
 5. Run python commands inside linux machine
 ```
-Auto
+Auto (Run from here)
 python3 classify.py --in abbas01.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 python3 attack.py --in abbas01.wav --target "this is a test" --out abbas01_adv.wav --iterations 3 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 python3 classify.py --in abbas01_adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
@@ -204,4 +204,6 @@ python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.
 - SOLUTION: Make sure that your `terminal current path` is root folder of our project before load docker
 
 - ERROR: Error: No module named 'DeepSpeech'
-- SOLUTION:
+- SOLUTION: Follow step 2
+
+
