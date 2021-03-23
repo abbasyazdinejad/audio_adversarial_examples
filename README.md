@@ -78,12 +78,12 @@ $ docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind
 ### Test Setup
 5. Check that you can classify normal audio correctly:
 ```
-$ python3 classify.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+$ python3 classify.py --in abbas01.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 
 6. Generate adversarial examples:
 ```
-$ python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+$ python3 attack.py --in abbas01.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 
 7. Verify the attack succeeded:
@@ -146,12 +146,12 @@ ca825ad95066b10f5e080db8cb24b165
 
 5. Check that you can classify normal images correctly
 ```
-python3 attack.py --in sample-000000.wav --restore_path tomdoerr/deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in abbas01.wav --restore_path tomdoerr/deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 
 6. Generate adversarial examples
 ```
-python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in abbas01.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 
 8. Verify the attack succeeded
@@ -182,7 +182,7 @@ python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.
  Extract: tar -xzf deepspeech-0.4.1-checkpoint.tar.gz
 ```
 
-4. Start the container and go inside of linux
+4. Start the container and go inside of linux (Run from here)
 ```
 docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind -w /audio_adversarial_examples tomdoerr/aae_deepspeech_041_cpu:latest
 ```
@@ -190,13 +190,13 @@ docker run -it --mount src=$(pwd),target=/audio_adversarial_examples,type=bind -
 5. Run python commands inside linux machine
 ```
 Auto
-python3 classify.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
-python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 classify.py --in abbas01.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in abbas01.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 python3 classify.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 
 Manual
-python3 attack.py --in sample-000000.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
-python3 attack.py --in sample-000000.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in abbas01.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
+python3 attack.py --in abbas01.wav --target "this is a test" --out adv.wav --iterations 1000 --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 python3 attack.py --in adv.wav --restore_path deepspeech-0.4.1-checkpoint/model.v0.4.1
 ```
 # Abbas Exceptions
